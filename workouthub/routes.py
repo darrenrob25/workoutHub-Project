@@ -5,4 +5,4 @@ from workouthub.models import Workout, Exercise
 
 @app.route("/")
 def home():
-    return render_template("base.html") 
+    return render_template("home.html") 
