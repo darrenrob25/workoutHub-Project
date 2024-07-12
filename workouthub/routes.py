@@ -6,10 +6,39 @@ from workouthub import app, db
 from workouthub.models import User, Workout, Exercise
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
-    return render_template("home.html")
+    if request.method == "POST":
+        # Get the username and password from the form
+        username = request.form.get("username")
+        password = request.form.get("password")
 
+        # Check if the username and password are provided
+        if not username or not password:
+            flash("Username and Password are required.", "danger")
+            return redirect(url_for("home"))
+
+        username = username.lower()  # Ensure username is in lowercase
+
+        # Fetch the user from the database
+        existing_user = User.query.filter_by(username=username).first()
+
+        if existing_user:
+            # Check if the password matches
+            if check_password_hash(existing_user.password, password):
+                session["user"] = username
+                flash(f"Welcome Back, {username}", "success")
+                return redirect(url_for("home"))
+            else:
+                # Incorrect password
+                flash("Incorrect Username or Password", "danger")
+        else:
+            # Username doesn't exist
+            flash("Incorrect Username or Password", "danger")
+
+        return redirect(url_for("home"))
+
+    return render_template("home.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -29,7 +58,7 @@ def register():
         if existing_user:
             flash("Username already in use", "danger")
             return redirect(url_for("register"))
-
+        #hashing password for security
         hashed_password = generate_password_hash(password)
         new_user = User(username=username, password=hashed_password)
         
