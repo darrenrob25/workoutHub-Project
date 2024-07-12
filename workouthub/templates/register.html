@@ -1,23 +1,28 @@
 {% extends "base.html" %}
+
 {% block content %}
 
 <div class="login-container justify-content-center bg-dark">
     <h3 class="text-center">Register</h3>
-    {% with messages = get_flashed_messages() %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            <div class="alert alert-danger" role="alert">
-                {{ messages[0] }}
+            <div class="alert-container">
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} text-center" role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
             </div>
         {% endif %}
     {% endwith %}
     <form method="POST" action="{{ url_for('register') }}">
         <div class="form-group">
             <label for="usernameinput" class="text-white">Username</label>
-            <input type="text" class="form-control bg-dark" id="usernameinput" name="username" aria-describedby="username" placeholder="Username" required>
+            <input type="text" class="form-control bg-dark text-white" id="usernameinput" name="username" aria-describedby="username" placeholder="Username" required>
         </div>
         <div class="form-group last-group">
             <label for="passwordinput" class="text-white">Password</label>
-            <input type="password" class="form-control bg-dark" id="passwordinput" name="password" aria-describedby="password" placeholder="Password" required>
+            <input type="password" class="form-control bg-dark text-white" id="passwordinput" name="password" aria-describedby="password" placeholder="Password" required>
         </div>
         <div class="login-bt-container">
             <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-center text-center" type="submit">Register Account</button>

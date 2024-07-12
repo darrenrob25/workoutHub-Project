@@ -18,7 +18,7 @@ def register():
         password = request.form.get("password")
         
         if not username or not password:
-            flash("Username and password are required")
+            flash("Username and password are required", "danger")
             return redirect(url_for("register"))
 
         username = username.lower()
@@ -27,7 +27,7 @@ def register():
         existing_user = User.query.filter_by(username=username).first()
 
         if existing_user:
-            flash("Username already in use")
+            flash("Username already in use", "danger")
             return redirect(url_for("register"))
 
         hashed_password = generate_password_hash(password)
@@ -38,7 +38,7 @@ def register():
 
         # Put the new user into session
         session["user"] = username
-        flash("Registration successful")
+        flash("Registration successful", "success")
         return redirect(url_for("home"))
 
     return render_template("register.html")
