@@ -10,7 +10,7 @@
 <body>
 
     <div class="navbar navbar-expand-md navbar-light bg-dark sticky-top">
-        <a class="navbar-brand text-white logo-text d-flex justify-content-start" href="#">WorkoutHub</a>
+        <a class="navbar-brand logo-text text-white d-flex justify-content-start" href="#">WorkoutHub</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -28,7 +28,7 @@
             </ul>
         </div>
         <form class="form-inline my-4 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-end" type="submit">Register</button>
+            <a href="{{ url_for('register') }}"><button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-end" type="button">Register</button></a>
         </form>
     </div>
 

@@ -1,10 +1,17 @@
-.body {
+@import url('https://fonts.googleapis.com/css2?family=Monofett&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Monofett&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+
+body {
     color:white;
+    font-family: "Red Hat Mono", monospace;
 }
 
 .navbar-brand{
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 500;
+    font-family: "Monofett", monospace;
+    font-weight: 50;
+    color: white;
 }
 
 .navbar-nav{
@@ -33,13 +40,15 @@
 h3{
     margin-bottom: 40px;
     color: white;
+    font-family: "Red Hat Mono", monospace;
+    font-size: 1.9rem;
 }
 
 .last-group{
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+    margin-top: 50px;
 }
 
 .login-bt-container{
     text-align: center;
-    padding-top: 35px;
 }

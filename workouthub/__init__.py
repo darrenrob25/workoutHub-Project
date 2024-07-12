@@ -1,6 +1,7 @@
 import os 
 from flask import Flask 
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 

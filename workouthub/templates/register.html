@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="login-container justify-content-center bg-dark">
+    <h3 class="text-center">Register</h3>
+    <form>
+        <div class="form-group">
+            <label for="usernameinput" class="text-white">Username</label>
+            <input type="email" class="form-control bg-dark" id="usernameinput" aria-describedby="username" placeholder="Username">
+        </div>
+        <div class="form-group last-group">
+            <label for="passwordinput" class="text-white">Password</label>
+            <input type="password" class="form-control bg-dark" id="passwordinput" aria-describedby="password" placeholder="Password">
+        </div>
+        <div class="login-bt-container">
+            <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-center text-center" type="submit">Register Account</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
