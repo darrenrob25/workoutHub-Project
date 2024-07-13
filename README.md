@@ -46,3 +46,27 @@ Ultimately the goal of the app is to create a secure and easy way to edit and ke
 
 ### Database Schema
 ![Image of database schema](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/schema.png)
+
+
+***
+
+### Features
+
+
+***
+
+### Testing
+
+
+***
+
+### Bugs
+
+#### Bug 1
+The first issue which I encountered was being unable to build my database.
+
+This issue was rectified by using: psql -h 127.0.0.1 in the terminal, forcing psql to connect on the port, as it was trying to connect via something else.
+
+#### Bug 2
+The second issue I encountered was when trying to edit/delete a workout, this was taking me to the url with undefined at the end.
+
