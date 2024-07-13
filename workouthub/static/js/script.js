@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let exerciseCount = 1; // Initialize exercise count
     let workoutsFetched = false;
 
+    // Fetch and display workouts when "View Workouts" is clicked
     viewWorkoutsLink.addEventListener('click', function(event) {
         event.preventDefault();
 
@@ -39,10 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${workout.exercises.map(exercise => `
                                     <p>${exercise.exercise_name}: ${exercise.sets} sets, ${exercise.reps} reps</p>
                                 `).join('')}
-                                <div class="row">
-                                <a href="#"class="edit-button col">Edit Workout</a>
-                                
-                                <a href="{{ url_for('delete_workout', workout_id=workout.id)}}" class="delete-button col"><i class="fa fa-minus" aria-hidden="true"></i> Delete Workout</a>
+                                 <div class="row">
+                                    <a href="/edit-workout/${workout.id}" class="edit-button col">
+                                        <i class="fa fa-arrow-right" aria-hidden="true"></i> Edit Workout
+                                    </a>
+                                    <form action="/delete_workout/${workout.id}" method="POST" class="delete-form col">
+                                        <button type="submit" class="btn btn-link delete-button">
+                                            <i class="fa fa-minus" aria-hidden="true"></i> Delete Workout
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             `;
@@ -59,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Toggle visibility of the add workout container
     addWorkoutLink.addEventListener('click', function(event) {
         event.preventDefault();
 
@@ -72,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Add a new exercise field in the form
     addExerciseButton.addEventListener('click', function(event) {
         event.preventDefault();
         const newExerciseDiv = document.createElement('div');

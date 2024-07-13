@@ -116,4 +116,23 @@ text-align: center;
 
 .delete-button{
 text-align: center;
+all: none;
+font-size: 1.1rem;
+color: white
+}
+
+.delete-button:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.514);
+    cursor:pointer;
+}
+
+button{
+    all: unset;
+}
+
+#add-workout-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
 }

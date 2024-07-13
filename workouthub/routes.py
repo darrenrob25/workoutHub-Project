@@ -163,7 +163,34 @@ def delete_workout(workout_id):
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
-    db.session.delete(workout)
-    db.session.commit()
-    flash("Workout deleted successfully!", "success")
-    return redirect(url_for("dashboard", username=user.username))
+    if workout.user_id == user.id:
+        db.session.delete(workout)
+        db.session.commit()
+        flash("Workout deleted successfully!", "success")
+        return redirect(url_for("dashboard", username=user.username))
+
+@app.route("/edit-workout/<int:workout_id>", methods=["GET", "POST"])
+def edit_workout(workout_id):
+    workout = Workout.query.get_or_404(workout_id)
+    
+    if request.method == "POST":
+        workout_name = request.form.get("workout_name")
+        workout_type = request.form.get("workout_type")
+        
+        if not workout_name or not workout_type:
+            flash("Workout name and type are required.", "danger")
+            return redirect(url_for("edit_workout", workout_id=workout_id))
+        
+        workout.workout_name = workout_name
+        workout.workout_type = workout_type
+        
+        try:
+            db.session.commit()
+            flash("Workout updated successfully!", "success")
+            return redirect(url_for("dashboard", username=session.get("user")))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"An error occurred: {str(e)}", "danger")
+            return redirect(url_for("edit_workout", workout_id=workout_id))
+    
+    return render_template("edit_workout.html", workout=workout)
