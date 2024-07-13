@@ -35,6 +35,18 @@
             <label for="workout_type">Workout Type</label>
             <input type="text" class="form-control" id="workout_type" name="workout_type" required>
         </div>
+        <div id="exercises-container">
+            <div class="exercise form-group">
+                <h5>Exercise 1</h5>
+                <label for="exercise_name_0">Exercise Name</label>
+                <input type="text" class="form-control" id="exercise_name_0" name="exercise_name[]" required>
+                <label for="sets_0">Sets</label>
+                <input type="number" class="form-control" id="sets_0" name="sets[]" required>
+                <label for="reps_0">Reps</label>
+                <input type="number" class="form-control" id="reps_0" name="reps[]" required>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary" id="add-exercise-button">Add Exercise</button>
         <button type="submit" class="btn btn-primary">Add Workout</button>
     </form>
 </div>
