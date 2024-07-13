@@ -144,3 +144,25 @@ def add_workout():
         flash(f"An error occurred: {str(e)}", "danger")
 
     return redirect(url_for("dashboard", username=user.username))
+
+@app.route("/delete_workout/<int:workout_id>")
+def delete_workout(workout_id):
+    if "user" not in session:
+        flash("You must be logged in to delete a workout.", "danger")
+        return redirect(url_for("home"))
+
+    user = User.query.filter_by(username=session.get("user")).first()
+    if not user:
+        flash("User not found.", "danger")
+        return redirect(url_for("home"))
+
+    workout = Workout.query.get_or_404(workout_id)
+
+    if workout.user_id != user.id:
+        flash("You do not have permission to delete this workout.", "danger")
+        return redirect(url_for("dashboard", username=user.username))
+
+    db.session.delete(workout)
+    db.session.commit()
+    flash("Workout deleted successfully!", "success")
+    return redirect(url_for("dashboard", username=user.username))
