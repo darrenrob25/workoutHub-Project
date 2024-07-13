@@ -39,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${workout.exercises.map(exercise => `
                                     <p>${exercise.exercise_name}: ${exercise.sets} sets, ${exercise.reps} reps</p>
                                 `).join('')}
+                                <div class="row">
+                                <a href="#"class="edit-button col">Edit Workout</a>
+                                <a href="#" class="delete-button col"><i class="fa fa-minus" aria-hidden="true"></i> Delete Workout</a>
+                                </div>
                             </div>
                             `;
                             workoutsList.appendChild(workoutDiv);

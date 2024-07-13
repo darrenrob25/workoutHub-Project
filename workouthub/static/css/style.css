@@ -109,3 +109,11 @@ a:hover {
     padding-top: 10px;
     margin-top: 10px;
 }
+
+.edit-button{
+text-align: center;
+}
+
+.delete-button{
+text-align: center;
+}
