@@ -18,15 +18,33 @@
 
 <!-- View Workouts-->
 <div id="workouts-container" style="display:none;">
-
     <div class="container bg-dark workout-head">
         <h4 class="text-center">Your Workouts</h4>
     </div>
-
-    <div id="workouts-list" class="row"></div>
+    <div id="workouts-list" class="row">
+        {% for workout in workouts %}
+            <div class="col-md-6 col-lg-6 mb-4">
+                <div class="your-workout-container bg-dark p-3 text-white">
+                    <h5>{{ workout.workout_name }}</h5>
+                    <p>{{ workout.workout_type }}</p>
+                    {% for exercise in workout.exercises %}
+                        <p>{{ exercise.exercise_name }}: {{ exercise.sets }} sets, {{ exercise.reps }} reps</p>
+                    {% endfor %}
+                    <div class="row">
+                        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="edit-button col">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i> Edit Workout
+                        </a>
+                        <form action="{{ url_for('delete_workout', workout_id=workout.id) }}" method="POST" class="delete-form col">
+                            <button type="submit" class="btn btn-link delete-button">
+                                <i class="fa fa-minus" aria-hidden="true"></i> Delete Workout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </div>
-</div>
-
 
 <!-- Add Workouts-->
 <div id="add-workout-container" class="container bg-dark mt-4" style="display:none;">
