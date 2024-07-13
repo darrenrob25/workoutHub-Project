@@ -28,7 +28,7 @@ def home():
             if check_password_hash(existing_user.password, password):
                 session["user"] = username
                 flash(f"Welcome Back, {username}", "success")
-                return redirect(url_for("home"))
+                return redirect(url_for("dashboard", username=["username"]))
             else:
                 # Incorrect password
                 flash("Incorrect Username or Password", "danger")
@@ -39,6 +39,22 @@ def home():
         return redirect(url_for("home"))
 
     return render_template("home.html")
+
+
+@app.route("/dashboard/<username>", methods=["GET", "POST"])
+def dashboard(username):
+    # Check if the user is logged in
+    if "user" not in session:
+        return redirect(url_for("home"))
+    
+    # Obtain the session user's username from the workouthub database
+    user = User.query.filter_by(username=session.get("user")).first()
+    if user:
+        username = user.username
+    else:
+        return redirect(url_for("home"))  # Optional: handle the case where the user is not found in the database
+    
+    return render_template("dashboard.html", username=username)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
