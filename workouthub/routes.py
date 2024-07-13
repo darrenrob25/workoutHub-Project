@@ -3,6 +3,7 @@ from flask import (
 from werkzeug.security import generate_password_hash, check_password_hash
 from workouthub import app, db
 from workouthub.models import User, Workout, Exercise
+import logging
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -145,7 +146,7 @@ def add_workout():
 
     return redirect(url_for("dashboard", username=user.username))
 
-@app.route("/delete_workout/<int:workout_id>")
+@app.route("/delete_workout/<int:workout_id>", methods=["POST"])
 def delete_workout(workout_id):
     if "user" not in session:
         flash("You must be logged in to delete a workout.", "danger")
