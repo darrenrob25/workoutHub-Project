@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const viewWorkoutsLink = document.getElementById('view-workouts');
+    const addWorkoutLink = document.getElementById('add-workout');
     const workoutsContainer = document.getElementById('workouts-container');
+    const addWorkoutContainer = document.getElementById('add-workout-container');
     let workoutsFetched = false;
 
     viewWorkoutsLink.addEventListener('click', function(event) {
@@ -25,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                             const workoutDiv = document.createElement('div');
                             workoutDiv.className = 'workout';
                             workoutDiv.innerHTML = `
-                                <h5>${workout.name}</h5>
-                                <p>${workout.description}</p>
+                                <h5>${workout.workout_name}</h5>
+                                <p>${workout.workout_type}</p>
                             `;
                             workoutsList.appendChild(workoutDiv);
                         });
@@ -38,6 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
             }
             workoutsContainer.style.display = 'block';
+        }
+    });
+
+    addWorkoutLink.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (addWorkoutContainer.style.display === 'block') {
+            addWorkoutContainer.style.display = 'none';
+        } else {
+            addWorkoutContainer.style.display = 'block';
         }
     });
 });

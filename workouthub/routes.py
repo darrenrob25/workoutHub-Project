@@ -51,7 +51,7 @@ def get_workouts():
         return jsonify({"error": "User not found"}), 404
 
     workouts = Workout.query.filter_by(user_id=user.id).all()
-    workouts_data = [{"name": w.name, "description": w.description} for w in workouts]
+    workouts_data = [{"workout_name": w.workout_name, "workout_type": w.workout_type} for w in workouts]
 
     return jsonify(workouts_data)
 
@@ -89,3 +89,36 @@ def logout():
     flash("Successfully Logged Out")
     session.clear()
     return redirect(url_for("home"))
+
+@app.route("/add_workout", methods=["POST"])
+def add_workout():
+    if "user" not in session:
+        flash("You must be logged in to add a workout.", "danger")
+        return redirect(url_for("home"))
+
+    user = User.query.filter_by(username=session.get("user")).first()
+    if not user:
+        flash("User not found.", "danger")
+        return redirect(url_for("home"))
+
+    workout_name = request.form.get("workout_name")
+    workout_type = request.form.get("workout_type")
+
+    if not workout_name or not workout_type:
+        flash("Workout name and type are required.", "danger")
+        return redirect(url_for("dashboard", username=user.username))
+
+    new_workout = Workout(
+        workout_name=workout_name,
+        workout_type=workout_type,
+        user_id=user.id  # Assign the current user's ID
+    )
+    db.session.add(new_workout)
+    try:
+        db.session.commit()
+        flash("Workout added successfully!", "success")
+    except Exception as e:
+        db.session.rollback()  # Rollback the session in case of an error
+        flash(f"An error occurred: {str(e)}", "danger")
+
+    return redirect(url_for("dashboard", username=user.username))
