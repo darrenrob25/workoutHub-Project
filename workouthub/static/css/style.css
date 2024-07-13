@@ -1,9 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Monofett&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Monofett&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
 
+html, body {
+    height: 100%;
+}
+
 body {
     color:white;
     font-family: "Red Hat Mono", monospace;
+    display: Grid;
 }
 
 .navbar-brand{
@@ -23,8 +28,13 @@ body {
 }
 
 .footer{
-    height: 50px;
-    margin-top: 100px;
+    margin-top: 200px;
+    height: 120px;
+    grid-area: footer;
+    padding-top: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 0;
 }
 
 .login-container{
