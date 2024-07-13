@@ -31,10 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         data.forEach(workout => {
                             const workoutDiv = document.createElement('div');
-                            workoutDiv.className = 'workout';
+                            workoutDiv.className = 'col-md-6 col-lg-4 mb-4';
                             workoutDiv.innerHTML = `
+                            <div class="your-workout-container bg-dark">
                                 <h5>${workout.workout_name}</h5>
                                 <p>${workout.workout_type}</p>
+                                
+                            </div>
                             `;
                             workoutsList.appendChild(workoutDiv);
                         });
