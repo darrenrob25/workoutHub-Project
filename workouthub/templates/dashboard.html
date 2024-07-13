@@ -4,17 +4,22 @@
 <div class="login-container justify-content-center bg-dark">
     <div>
        <h3 class="text-center">
-        {{ username}}'s Dashboard
+        {{ username }}'s Dashboard
        </h3>
     </div>
 </div>
 
 <div class="container bg-dark dashboard-options">
-        <div class="row">
-            <h4 class="col text-center"><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add Workout</a></h4>
-            <h4 class="col text-center"><a href="#"><i class="fa fa-heart-o" aria-hidden="true"></i> View Workouts</a></h4>
-            <h4 class="col text-center"><a href="#"><i class="fa fa-minus" aria-hidden="true"></i> Remove Workout</a></h4>
-       </div>
+    <div class="row">
+        <h4 class="col text-center"><a href="#"><i class="fa fa-plus" aria-hidden="true"></i> Add Workout</a></h4>
+        <h4 class="col text-center"><a href="#" id="view-workouts"><i class="fa fa-heart-o" aria-hidden="true"></i> View Workouts</a></h4>
+        <h4 class="col text-center"><a href="#"><i class="fa fa-minus" aria-hidden="true"></i> Remove Workout</a></h4>
     </div>
+</div>
+
+<div id="workouts-container" class="container bg-dark mt-4" style="display:none;">
+    <h4 class="text-center">Your Workouts</h4>
+    <div id="workouts-list"></div>
+</div>
 
 {% endblock %}
