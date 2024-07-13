@@ -51,7 +51,15 @@ def get_workouts():
         return jsonify({"error": "User not found"}), 404
 
     workouts = Workout.query.filter_by(user_id=user.id).all()
-    workouts_data = [{"workout_name": w.workout_name, "workout_type": w.workout_type} for w in workouts]
+    workouts_data = []
+    for workout in workouts:
+        exercises = Exercise.query.filter_by(workout_id=workout.id).all()
+        exercises_data = [{"exercise_name": e.exercise_name, "sets": e.sets, "reps": e.reps} for e in exercises]
+        workouts_data.append({
+            "workout_name": workout.workout_name,
+            "workout_type": workout.workout_type,
+            "exercises": exercises_data
+        })
 
     return jsonify(workouts_data)
 
@@ -103,6 +111,9 @@ def add_workout():
 
     workout_name = request.form.get("workout_name")
     workout_type = request.form.get("workout_type")
+    exercise_names = request.form.getlist("exercise_name[]")
+    sets = request.form.getlist("sets[]")
+    reps = request.form.getlist("reps[]")
 
     if not workout_name or not workout_type:
         flash("Workout name and type are required.", "danger")
@@ -111,12 +122,23 @@ def add_workout():
     new_workout = Workout(
         workout_name=workout_name,
         workout_type=workout_type,
-        user_id=user.id  # Assign the current user's ID
+        user_id=user.id
     )
     db.session.add(new_workout)
     try:
         db.session.commit()
-        flash("Workout added successfully!", "success")
+
+        for exercise_name, set_count, rep_count in zip(exercise_names, sets, reps):
+            new_exercise = Exercise(
+                exercise_name=exercise_name,
+                sets=set_count,
+                reps=rep_count,
+                workout_id=new_workout.id
+            )
+            db.session.add(new_exercise)
+
+        db.session.commit()
+        flash("Workout and exercises added successfully!", "success")
     except Exception as e:
         db.session.rollback()  # Rollback the session in case of an error
         flash(f"An error occurred: {str(e)}", "danger")

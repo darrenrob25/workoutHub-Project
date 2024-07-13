@@ -14,7 +14,7 @@ class Workout(db.Model):
     # Schema for the workout model
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id", ondelete="CASCADE"), nullable=False)
-    workout_name = db.Column(db.String(90), unique=True, nullable=False)
+    workout_name = db.Column(db.String(90), unique=False, nullable=False)
     workout_type = db.Column(db.String(90), nullable=False) 
     exercises = db.relationship("Exercise", backref="workout", cascade="all, delete", lazy=True)
 

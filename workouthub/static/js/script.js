@@ -28,15 +28,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
                         const workoutsList = document.getElementById('workouts-list');
                         workoutsList.innerHTML = '';
-
+                        
                         data.forEach(workout => {
                             const workoutDiv = document.createElement('div');
-                            workoutDiv.className = 'col-md-6 col-lg-4 mb-4';
+                            workoutDiv.className = 'col-md-6 col-lg-6 mb-4';
                             workoutDiv.innerHTML = `
-                            <div class="your-workout-container bg-dark">
+                            <div class="your-workout-container bg-dark p-3 text-white">
                                 <h5>${workout.workout_name}</h5>
                                 <p>${workout.workout_type}</p>
-                                
+                                ${workout.exercises.map(exercise => `
+                                    <p>${exercise.exercise_name}: ${exercise.sets} sets, ${exercise.reps} reps</p>
+                                `).join('')}
                             </div>
                             `;
                             workoutsList.appendChild(workoutDiv);

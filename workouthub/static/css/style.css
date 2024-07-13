@@ -92,9 +92,11 @@ a:hover {
     color: rgba(255, 255, 255, 0.514);
 }
 
-#workouts-container {
+.workout-head {
     padding: 20px;
     border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #workouts-list {
@@ -104,4 +106,6 @@ a:hover {
 
 .your-workout-container{
     border-radius: 15px;
+    padding-top: 10px;
+    margin-top: 10px;
 }
