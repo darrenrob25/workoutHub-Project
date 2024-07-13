@@ -33,5 +33,40 @@ Ultimately the goal of the app is to create a secure and easy way to edit and ke
 
 ## Design
 ### Wireframes
+#### Home Page
+![Image of homepage.html](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/New%20Wireframe%201.png)
+
+#### Workout Page
+![Image of homepage.html](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/New%20Wireframe%201%20(3).png)
+
+#### Edit Workout Page
+![Image of homepage.html](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/New%20Wireframe%201%20(1).png)
+
+***
 
 ### Database Schema
+![Image of database schema](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/schema.png)
+
+
+***
+
+### Features
+
+
+***
+
+### Testing
+
+
+***
+
+### Bugs
+
+#### Bug 1
+The first issue which I encountered was being unable to build my database.
+
+This issue was rectified by using: psql -h 127.0.0.1 in the terminal, forcing psql to connect on the port, as it was trying to connect via something else.
+
+#### Bug 2
+The second issue I encountered was when trying to edit/delete a workout, this was taking me to the url with undefined at the end.
+
