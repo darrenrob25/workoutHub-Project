@@ -87,3 +87,11 @@ def register():
         return redirect(url_for("home"))
 
     return render_template("register.html")
+
+
+@app.route("/logout")
+def logout():
+    # remove user from session cookie.
+    flash("Successfully Logged Out")
+    session.clear()
+    return redirect(url_for("home"))

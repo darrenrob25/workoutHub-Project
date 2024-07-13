@@ -12,24 +12,28 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        {% if session.user %}
         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item nav-link">
                     <a class="text-white" href="{{ url_for('dashboard', username=session['user']) }}">Dashboard</a>
                 </li>
                 <li class="nav-item nav-link">
-                    <a class="text-white" href="{{ url_for('home') }}">About</a>
+                    <a class="text-white" href="{{ url_for('home') }}">Workouts</a>
                 </li>
                 <li class="nav-item nav-link">
-                    <a class="text-white" href="{{ url_for('home') }}">Logout</a>
+                    <a class="text-white" href="{{ url_for('logout') }}">Logout</a>
                 </li>
             </ul>
         </div>
+        {% else %}
         <form class="form-inline my-4 my-lg-0">
             <a href="{{ url_for('register') }}">
-                <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-end" type="button">Register</button>
+                <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-end"
+                    type="button">Register</button>
             </a>
         </form>
+        {% endif %}
     </div>
 
     <main class="container mt-4">
