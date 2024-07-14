@@ -209,3 +209,17 @@ This issue was likely caused by to much interaction having happened for the data
 13. Enter your github account details and select the forked/ clone repository.
 14. Select 'Manual deploy', select the 'main' branch in the drop down and click the 'Deploy' button.
 15. Once built, click the 'View' button to load the URL and it should be done.
+
+#### Database
+The Database for this project was provided by CodeInstitute, you can obtain a postgresql server from many vendors including Heroku it's self. Once you have your Postgres server you should follow the below steps:
+1. Navigate to your app in heroku
+2. Click on the settings tab.
+3. Click reveal config vars
+4. Update the DATABASE_URL to be your database link.
+5. To migrate your models to the new database use the heroku terminal and select a 'Python3' terminal
+6. Use the below codes in the terminal to create your database:
+7. 'From Workouthub import db'
+8. 'db.create_all()'
+
+***
+
