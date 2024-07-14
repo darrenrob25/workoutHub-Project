@@ -72,6 +72,37 @@ Used for the rest of the text throughout the website
 
 ### Features
 
+#### Log in
+The page where a user is able to log into their already existing account, which allows them to access their dashboard.
+
+![Login](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/login-function.png)
+
+#### Register
+The register button takes the user to a page to register a new account if one doesn't currently exist.
+
+![Register](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/signup-function.png)
+
+#### Dashboard
+The users dashboard displaying all of your workouts and functionality to update, create and delete workouts.
+
+![Dashboard](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)
+
+#### Add Workout Page
+Page allowing you to add workouts, increase the number of exercises within a workout.
+
+![Gameboard Screenshot](assets/media/howtoplay-ss.png)
+
+#### Edit Workout
+Page allowing you to change currently existing workouts.
+
+![Edit Workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout.png)
+
+***
+
+### Future Implementations
+* A feature that I would like to add in the future would be metrics to the dashboard, showing possibibly the total number of workouts you have saved, the percentages of categories.
+* A feature that I would also like to add in the future would be the ability to actually log individual sessions and compare them every time you do the same session.
+* A final feature I would like to add in the future would be an admin user who is able to view all users and delete users.
 
 ***
 
