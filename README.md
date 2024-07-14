@@ -70,3 +70,6 @@ This issue was rectified by using: psql -h 127.0.0.1 in the terminal, forcing ps
 #### Bug 2
 The second issue I encountered was when trying to edit/delete a workout, this was taking me to the url with undefined at the end.
 
+This issue was rectified by moving a lot of functionality away from the javascript file and into the html file, allowing me to use JS to handle the replication and jinja in the html to link correctly.
+
+#### Bug 3
