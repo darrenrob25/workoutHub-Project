@@ -111,27 +111,35 @@ def logout():
     session.clear()
     return redirect(url_for("home"))
 
+
+# Route for adding a new workout
 @app.route("/add_workout", methods=["POST"])
 def add_workout():
+    # Checking user is logged in to be able to add workout
     if "user" not in session:
         flash("You must be logged in to add a workout.", "danger")
         return redirect(url_for("home"))
 
+    # Getting username based on the username stores in the session
     user = User.query.filter_by(username=session.get("user")).first()
     if not user:
         flash("User not found.", "danger")
         return redirect(url_for("home"))
 
+    # Getting workoutdetails and exercises from the form
     workout_name = request.form.get("workout_name")
     workout_type = request.form.get("workout_type")
     exercise_names = request.form.getlist("exercise_name[]")
     sets = request.form.getlist("sets[]")
     reps = request.form.getlist("reps[]")
 
+    # Checking if both workout name and type are provided
     if not workout_name or not workout_type:
         flash("Workout name and type are required.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
+
+    # Creating a new workout record and adding it to the database
     new_workout = Workout(
         workout_name=workout_name,
         workout_type=workout_type,
