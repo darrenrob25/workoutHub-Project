@@ -150,6 +150,7 @@ The below metrics were returned:
 * I have tested the Add workouts function works correctly.
 * I have tested the Editing Workouts function works correctly.
 * I have tested the Delete workouts function works correctly.
+
 ***
 
 ### Bugs
@@ -169,3 +170,25 @@ The third issue which I encountered was that the live version hosted on heroku m
 
 This issue was likely caused by to much interaction having happened for the database to handle. This was rectified by restarting all dyno's in heroku.
 
+***
+
+### Cloning & Forking
+#### Fork
+1. On GitHub.com, navigate to the [WorkoutHub](https://github.com/darrenrob25/workoutHub-project) repository.
+2. In the top-right corner of the page, click Fork.
+3. By default, forks are named the same as their parent repositories. You can change the name of the fork to distinguish it further.
+4. Add a description to your fork.
+5. Click Create fork.
+
+#### Clone
+1. Above the list of files click the button that says 'Code'.
+2. Copy the URL for the repository.
+3. Open Terminal. Change the directory to the location where you want the cloned directory.
+4. Type git clone, and then paste the URL
+5. Press Enter.
+
+### Local Deployment
+1. Sign up to [Gitpod](https://gitpod.io/)
+2. Download the Gitpod browser extension.
+3. On GitHub.com, navigate to the [WorkoutHub](https://github.com/darrenrob25/workoutHub) repository.
+4. Above the list of files click the button that says 'Gitpod'.
