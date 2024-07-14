@@ -1,6 +1,6 @@
 # WorkoutHub
 
-The Live App can be found at:
+The Live App can be found at: https://workouthub-2144cdf5941f.herokuapp.com/
 
 WorkoutHub is a place to keep, change and add new workouts all in one place. It allows you to easily access all of your planned workouts.
 
