@@ -48,20 +48,24 @@ def dashboard(username):
     else:
         return redirect(url_for("home"))
 
+    # Get all workouts associated with the user
     workouts = Workout.query.filter_by(user_id=user.id).all()
     workouts_data = []
     for workout in workouts:
+        # Get exercises for each workout
         exercises = Exercise.query.filter_by(workout_id=workout.id).all()
         exercises_data = [{"exercise_name": e.exercise_name, "sets": e.sets, "reps": e.reps} for e in exercises]
         workouts_data.append({
-            "id": workout.id,  # Make sure id is included for edit links
+            "id": workout.id,  # Makes sure id is included for edit links
             "workout_name": workout.workout_name,
             "workout_type": workout.workout_type,
             "exercises": exercises_data
         })
 
+    # Renders the dashboard template with the users workouts
     return render_template("dashboard.html", username=username, workouts=workouts_data)
 
+# Route for registration page, allowing GET and POST
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
