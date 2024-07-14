@@ -201,7 +201,7 @@ This issue was likely caused by to much interaction having happened for the data
 5. Go to settings section and click 'Reveal Config Vars' in the Config variable section.
 6. Set DATABASE_URL to your external database link.
 7. Set DEBUG to False
-8. Set IP to o.o.o.o
+8. Set IP to 0.0.0.0
 9. Set port to 5000
 10. Set SECRET_KEY to your chosen secret key
 11. Navigate to the 'Deploy' page
