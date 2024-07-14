@@ -1,3 +1,4 @@
+# Importing modules and functions from Flask and other libraries
 from flask import (
     flash, render_template, redirect, request, session, url_for, jsonify
 )
@@ -5,6 +6,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from workouthub import app, db
 from workouthub.models import User, Workout, Exercise
 
+
+# Route for the home page, handles both GET and POST requests
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
