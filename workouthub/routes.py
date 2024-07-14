@@ -200,9 +200,11 @@ def delete_workout(workout_id):
 # Route for handing editing a workout
 @app.route("/edit-workout/<int:workout_id>", methods=["GET", "POST"])
 def edit_workout(workout_id):
+    # Getting the workout by ID
     workout = Workout.query.get_or_404(workout_id)
     
     if request.method == "POST":
+        # Getting updated workout details and exercises from the form
         workout_name = request.form.get("workout_name")
         workout_type = request.form.get("workout_type")
         exercise_ids = request.form.getlist("exercise_id[]")
@@ -210,15 +212,17 @@ def edit_workout(workout_id):
         sets = request.form.getlist("sets[]")
         reps = request.form.getlist("reps[]")
 
+        # Checking that both workout name and type have been provided, if not flash message error
         if not workout_name or not workout_type:
             flash("Workout name and type are required.", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
-        
+
+        # Update the workout details
         workout.workout_name = workout_name
         workout.workout_type = workout_type
 
         try:
-            # Clear existing exercises
+            # Clear existing exercises for the workout
             Exercise.query.filter_by(workout_id=workout.id).delete()
 
             # Add updated exercises
