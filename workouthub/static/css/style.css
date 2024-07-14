@@ -9,6 +9,10 @@ body {
     color:white;
     font-family: "Red Hat Mono", monospace;
     display: Grid;
+    background-image: url('https://images.pexels.com/photos/924824/pexels-photo-924824.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 .navbar-brand{
@@ -17,6 +21,10 @@ body {
     font-family: "Monofett", monospace;
     font-weight: 50;
     color: white;
+}
+
+.navbar {
+    border-bottom: 1px solid white;
 }
 
 .navbar-nav{
@@ -35,6 +43,7 @@ body {
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 0;
+    border-top: 1px solid white;
 }
 
 .login-container{
@@ -46,6 +55,7 @@ body {
     padding-right: 30px;
     padding-top: 70px;
     padding-bottom: 70px;
+    border: 1px solid white;
 }
 
 h3{
@@ -60,11 +70,16 @@ h4{
 }
 
 h5{
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 .workouts-header{
     padding-top: 30px;
+}
+
+.dashboard-welcome{
+    font-size: 2.4rem;
+    text-transform: capitalize;
 }
 
 .workout-section{
@@ -89,6 +104,7 @@ h5{
     padding-top: 20px;
     padding-bottom: 15px;
     border-radius: 15px;
+    border: 1px solid white;
 }
 
 a {
@@ -108,6 +124,7 @@ a:hover {
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
+    border: 1px solid white;
 }
 
 #workouts-list {
@@ -119,6 +136,7 @@ a:hover {
     border-radius: 15px;
     padding-top: 10px;
     margin-top: 10px;
+    border: 1px solid white;
 }
 
 .edit-button{
@@ -146,6 +164,7 @@ button{
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 15px;
+    border: 1px solid white;
 }
 
 .edit-workout-container {
