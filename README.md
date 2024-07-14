@@ -58,11 +58,15 @@ Below are the designs that were used as a reference point to build the project, 
 
 ### Testing
 
-#### W3 Validator
+#### W3 HTML Validator
 
 ##### Home/Login Page
 https://validator.w3.org/nu/?doc=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2F
+No errors were returned
 
+#### Jigsaw CSS Validator
+https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en
+No errors were returned
 
 ***
 
