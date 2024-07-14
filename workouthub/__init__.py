@@ -19,13 +19,6 @@ else:
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_size": 5,        
-    "max_overflow": 10,     
-    "pool_timeout": 30     
-}
-
-
 db = SQLAlchemy(app)
 
 
