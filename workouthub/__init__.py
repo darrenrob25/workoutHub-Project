@@ -28,6 +28,15 @@ else:
          uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
+# Code found on slack to help resolve heroku error
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_size': 10,  # Number of connections to keep open in the pool
+    'max_overflow': 20,  # Maximum number of connections to open beyond pool_size
+    'pool_timeout': 30,  # Timeout in seconds for getting a connection from the pool
+    'pool_recycle': 1800,  # Recycle connections after 30 minutes to prevent stale connections
+    'pool_pre_ping': True  # Test connections for liveness before using them
+}
+# end of slack code
 
 db = SQLAlchemy(app)
 
