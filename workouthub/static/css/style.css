@@ -43,7 +43,7 @@ body {
     padding-top: 50px;
     padding-left: 30px;
     padding-right: 30px;
-    padding-bottom: 0;
+    padding-bottom: 15px;
     border-top: 1px solid white;
 }
 
@@ -174,4 +174,8 @@ button{
 
 .delete-exercise-button{
     margin-top: 10px;
+}
+
+.footer-text{
+    font-size: 0.9rem;
 }
