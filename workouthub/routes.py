@@ -72,13 +72,16 @@ def register():
         username = request.form.get("username")
         password = request.form.get("password")
         
+
+        # Check if both username and password are provided
         if not username or not password:
             flash("Username and password are required", "danger")
             return redirect(url_for("register"))
 
+        # Converting username to lowercase
         username = username.lower()
+        # Checking if username already exists
         existing_user = User.query.filter_by(username=username).first()
-
         if existing_user:
             flash("Username already in use", "danger")
             return redirect(url_for("register"))
