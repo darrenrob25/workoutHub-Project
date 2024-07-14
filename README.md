@@ -96,7 +96,6 @@ The below metrics were returned:
 * The most complex function has a cyclomatic complexity value of 5 with the median being 1.
 
 #### User Story Testing
-### User Stories Testing
 #### First Time User
 |Story No.|Result|Story/ Evidence|
 | ------------- | ------------- | ------------- |
@@ -110,6 +109,16 @@ The below metrics were returned:
 |1|Test Pass |As a user, <br> I want to be able to make changes to my workouts  <br><br>I know I am done, when users are able to edit their workouts.<br><br>Evidence:<br>There is functionality to edit workouts<br> ![edit-workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout.png)|
 |2|Test Pass |As a user, <br> I want to be able to delete existing workouts.  <br><br>I know this has been achieved there is the ability to delete workouts <br><br>Evidence:<br>The functionality to delete workouts works correctly<br> ![delete workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)|
 
+#### Accessibility Testing
+### Manual Testing
+* I have tested that the project works in different web browsers.
+* I have tested that the project is responsive and works with different device sizes and it looks good and functions correctly.
+* I have tested all links and they work correctly.
+* I have tested that register function works correctly.
+* I have tested that the login function works correctly.
+* I have tested the Add workouts function works correctly.
+* I have tested the Editing Workouts function works correctly.
+* I have tested the Delete workouts function works correctly.
 ***
 
 ### Bugs
