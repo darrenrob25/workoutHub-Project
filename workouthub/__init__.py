@@ -6,12 +6,6 @@ if os.path.exists("env.py"):
     import env
 from sqlalchemy.pool import QueuePool
 
-app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
-    "pool_size": 5,        
-    "max_overflow": 10,     
-    "pool_timeout": 30     
-}
-
 app = Flask(__name__)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
@@ -22,6 +16,13 @@ else:
     if uri.startswith("postgres://"):
          uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
+
+
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
+    "pool_size": 5,        
+    "max_overflow": 10,     
+    "pool_timeout": 30     
+}
 
 db = SQLAlchemy(app)
 
