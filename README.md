@@ -72,6 +72,37 @@ Used for the rest of the text throughout the website
 
 ### Features
 
+#### Log in
+The page where a user is able to log into their already existing account, which allows them to access their dashboard.
+
+![Login](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/login-function.png)
+
+#### Register
+The register button takes the user to a page to register a new account if one doesn't currently exist.
+
+![Register](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/signup-function.png)
+
+#### Dashboard
+The users dashboard displaying all of your workouts and functionality to update, create and delete workouts.
+
+![Dashboard](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)
+
+#### Add Workout Page
+Page allowing you to add workouts, increase the number of exercises within a workout.
+
+![Gameboard Screenshot](assets/media/howtoplay-ss.png)
+
+#### Edit Workout
+Page allowing you to change currently existing workouts.
+
+![Edit Workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout.png)
+
+***
+
+### Future Implementations
+* A feature that I would like to add in the future would be metrics to the dashboard, showing possibibly the total number of workouts you have saved, the percentages of categories.
+* A feature that I would also like to add in the future would be the ability to actually log individual sessions and compare them every time you do the same session.
+* A final feature I would like to add in the future would be an admin user who is able to view all users and delete users.
 
 ***
 
@@ -95,6 +126,31 @@ The below metrics were returned:
 * The largest function has 19 statements in it, the median is 5
 * The most complex function has a cyclomatic complexity value of 5 with the median being 1.
 
+#### User Story Testing
+#### First Time User
+|Story No.|Result|Story/ Evidence|
+| ------------- | ------------- | ------------- |
+|1|Test Pass |As a first time user , <br> I want to be able to know how to easily sign up <br> so that I can access the app.  <br><br>I know I am done, when there is clear signposting to sign up. <br><br>Evidence:<br>There is clear signposting to the register page in the navbar.<br> ![Signup Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/signup-function.png)|
+|2|Test Pass |As a first time user, <br> I want to be able to login <br> so that I asm able to use the app <br><br>I know this has been achieved when the user can sign in. <br><br>Evidence:<br>There is clear signposting to login, the login function is working correctly.<br> ![Login Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/login-function.png)|
+|3|Test Pass |As a first time user, <br> I want to be able to add workouts <br>so that i can use the app <br><br>I know I am done there is the ability to add workouts. <br><br>Evidence:<br>The Add Workout function is working as expected.<br> ![Add Workout Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/add-workout.png)|
+
+#### All Users
+|Story No.|Result|Story/ Evidence|
+| ------------- | ------------- | ------------- |
+|1|Test Pass |As a user, <br> I want to be able to make changes to my workouts  <br><br>I know I am done, when users are able to edit their workouts.<br><br>Evidence:<br>There is functionality to edit workouts<br> ![edit-workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout.png)|
+|2|Test Pass |As a user, <br> I want to be able to delete existing workouts.  <br><br>I know this has been achieved there is the ability to delete workouts <br><br>Evidence:<br>The functionality to delete workouts works correctly<br> ![delete workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)|
+
+#### Accessibility Testing
+### Manual Testing
+* I have tested that the project works in different web browsers.
+* I have tested that the project is responsive and works with different device sizes and it looks good and functions correctly.
+* I have tested all links and they work correctly.
+* I have tested that register function works correctly.
+* I have tested that the login function works correctly.
+* I have tested the Add workouts function works correctly.
+* I have tested the Editing Workouts function works correctly.
+* I have tested the Delete workouts function works correctly.
+
 ***
 
 ### Bugs
@@ -113,4 +169,57 @@ This issue was rectified by moving a lot of functionality away from the javascri
 The third issue which I encountered was that the live version hosted on heroku maxed out the possible connections.
 
 This issue was likely caused by to much interaction having happened for the database to handle. This was rectified by restarting all dyno's in heroku.
+
+***
+
+### Cloning & Forking
+#### Fork
+1. On GitHub.com, navigate to the [WorkoutHub](https://github.com/darrenrob25/workoutHub-project) repository.
+2. In the top-right corner of the page, click Fork.
+3. By default, forks are named the same as their parent repositories. You can change the name of the fork to distinguish it further.
+4. Add a description to your fork.
+5. Click Create fork.
+
+#### Clone
+1. Above the list of files click the button that says 'Code'.
+2. Copy the URL for the repository.
+3. Open Terminal. Change the directory to the location where you want the cloned directory.
+4. Type git clone, and then paste the URL
+5. Press Enter.
+
+#### Local Deployment
+1. Sign up to [Gitpod](https://gitpod.io/)
+2. Download the Gitpod browser extension.
+3. On GitHub.com, navigate to the [WorkoutHub](https://github.com/darrenrob25/workoutHub) repository.
+4. Above the list of files click the button that says 'Gitpod'.
+
+#### Remote Deployment
+1. Log in to Heroku
+2. Click on the 'Create new app' button.
+3. Give your application a name that hasn't been previously used, select the closest region to you and click the 'Create app' button.
+4. You can use an external database for example postgresql.
+5. Go to settings section and click 'Reveal Config Vars' in the Config variable section.
+6. Set DATABASE_URL to your external database link.
+7. Set DEBUG to False
+8. Set IP to 0.0.0.0
+9. Set port to 5000
+10. Set SECRET_KEY to your chosen secret key
+11. Navigate to the 'Deploy' page
+12. Select 'GitHub' from the 'Deployment method' section
+13. Enter your github account details and select the forked/ clone repository.
+14. Select 'Manual deploy', select the 'main' branch in the drop down and click the 'Deploy' button.
+15. Once built, click the 'View' button to load the URL and it should be done.
+
+#### Database
+The Database for this project was provided by CodeInstitute, you can obtain a postgresql server from many vendors including Heroku it's self. Once you have your Postgres server you should follow the below steps:
+1. Navigate to your app in heroku
+2. Click on the settings tab.
+3. Click reveal config vars
+4. Update the DATABASE_URL to be your database link.
+5. To migrate your models to the new database use the heroku terminal and select a 'Python3' terminal
+6. Use the below codes in the terminal to create your database:
+7. 'From Workouthub import db'
+8. 'db.create_all()'
+9. Your database should now be created.
+***
 
