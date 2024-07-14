@@ -149,6 +149,8 @@ def add_workout():
     try:
         db.session.commit()
 
+
+        # Adding new exercises associated with the new workout
         for exercise_name, set_count, rep_count in zip(exercise_names, sets, reps):
             new_exercise = Exercise(
                 exercise_name=exercise_name,
@@ -161,33 +163,41 @@ def add_workout():
         db.session.commit()
         flash("Workout and exercises added successfully!", "success")
     except Exception as e:
-        db.session.rollback()  # Rollback the session in case of an error
+        # Rolling back the session in case of an error
+        db.session.rollback() 
         flash(f"An error occurred: {str(e)}", "danger")
 
+    # Redirecting to the dashboard page
     return redirect(url_for("dashboard", username=user.username))
 
+
+# Route for deleting a workout
 @app.route("/delete_workout/<int:workout_id>", methods=["POST"])
 def delete_workout(workout_id):
     if "user" not in session:
         flash("You must be logged in to delete a workout.", "danger")
         return redirect(url_for("home"))
 
+    # Getting username based on the username stored in the session
     user = User.query.filter_by(username=session.get("user")).first()
     if not user:
         flash("User not found.", "danger")
         return redirect(url_for("home"))
 
+    # Getting the workout by ID and checking that it belongs to the current user, if not flash error
     workout = Workout.query.get_or_404(workout_id)
-
     if workout.user_id != user.id:
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
+    # Deleting the workout and committing
     db.session.delete(workout)
     db.session.commit()
     flash("Workout deleted successfully!", "success")
     return redirect(url_for("dashboard", username=user.username))
 
+
+# Route for handing editing a workout
 @app.route("/edit-workout/<int:workout_id>", methods=["GET", "POST"])
 def edit_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
