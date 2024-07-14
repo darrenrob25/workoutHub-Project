@@ -20,10 +20,11 @@ def home():
 
         # converting username to lowercase for consistency.
         username = username.lower()
-        #checking if the user exists and existing password is correct
+        # checking if the user exists and existing password is correct
         existing_user = User.query.filter_by(username=username).first()
-        if existing_user and check_password_hash(existing_user.password, password):
-            # If the login is successful, store the username in the session and redirect to dashboard
+        if existing_user and check_password_hash(
+                existing_user.password, password):
+            # If the login is successful, store the username in the session
             session["user"] = username
             flash(f"Welcome Back, {username}", "success")
             return redirect(url_for("dashboard", username=username))
@@ -54,7 +55,9 @@ def dashboard(username):
     for workout in workouts:
         # Get exercises for each workout
         exercises = Exercise.query.filter_by(workout_id=workout.id).all()
-        exercises_data = [{"exercise_name": e.exercise_name, "sets": e.sets, "reps": e.reps} for e in exercises]
+        exercises_data = [
+            {"exercise_name": e.exercise_name, "sets":
+                e.sets, "reps": e.reps} for e in exercises]
         workouts_data.append({
             "id": workout.id,  # Makes sure id is included for edit links
             "workout_name": workout.workout_name,
@@ -63,7 +66,9 @@ def dashboard(username):
         })
 
     # Renders the dashboard template with the users workouts
-    return render_template("dashboard.html", username=username, workouts=workouts_data)
+    return render_template(
+        "dashboard.html", username=username, workouts=workouts_data)
+
 
 # Route for registration page, allowing GET and POST
 @app.route("/register", methods=["GET", "POST"])
@@ -71,7 +76,6 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        
 
         # Check if both username and password are provided
         if not username or not password:
@@ -89,11 +93,10 @@ def register():
         # Hashing password before storing it for security
         hashed_password = generate_password_hash(password)
         new_user = User(username=username, password=hashed_password)
-        
+
         # Adding new user to the database and committing
         db.session.add(new_user)
         db.session.commit()
-
 
         # Log the user in and redirect to the home page
         session["user"] = username
@@ -138,7 +141,6 @@ def add_workout():
         flash("Workout name and type are required.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
-
     # Creating a new workout record and adding it to the database
     new_workout = Workout(
         workout_name=workout_name,
@@ -149,9 +151,9 @@ def add_workout():
     try:
         db.session.commit()
 
-
         # Adding new exercises associated with the new workout
-        for exercise_name, set_count, rep_count in zip(exercise_names, sets, reps):
+        for exercise_name, set_count, rep_count in zip(
+                exercise_names, sets, reps):
             new_exercise = Exercise(
                 exercise_name=exercise_name,
                 sets=set_count,
@@ -164,7 +166,7 @@ def add_workout():
         flash("Workout and exercises added successfully!", "success")
     except Exception as e:
         # Rolling back the session in case of an error
-        db.session.rollback() 
+        db.session.rollback()
         flash(f"An error occurred: {str(e)}", "danger")
 
     # Redirecting to the dashboard page
@@ -184,8 +186,7 @@ def delete_workout(workout_id):
         flash("User not found.", "danger")
         return redirect(url_for("home"))
 
-    # Getting the workout by ID and checking that it belongs to the current user, if not flash error
-    workout = Workout.query.get_or_404(workout_id)
+    # Getting the workout by ID and checking that it belongs to current user
     if workout.user_id != user.id:
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
@@ -202,7 +203,7 @@ def delete_workout(workout_id):
 def edit_workout(workout_id):
     # Getting the workout by ID
     workout = Workout.query.get_or_404(workout_id)
-    
+
     if request.method == "POST":
         # Getting updated workout details and exercises from the form
         workout_name = request.form.get("workout_name")
@@ -212,7 +213,7 @@ def edit_workout(workout_id):
         sets = request.form.getlist("sets[]")
         reps = request.form.getlist("reps[]")
 
-        # Checking that both workout name and type have been provided, if not flash message error
+        # Checking that both workout name and type have been provided
         if not workout_name or not workout_type:
             flash("Workout name and type are required.", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
@@ -226,7 +227,8 @@ def edit_workout(workout_id):
             Exercise.query.filter_by(workout_id=workout.id).delete()
 
             # Add updated exercises
-            for exercise_name, set_count, rep_count in zip(exercise_names, sets, reps):
+            for exercise_name, set_count, rep_count in zip(
+                    exercise_names, sets, reps):
                 new_exercise = Exercise(
                     exercise_name=exercise_name,
                     sets=set_count,
@@ -242,5 +244,5 @@ def edit_workout(workout_id):
             db.session.rollback()
             flash(f"An error occurred: {str(e)}", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
-    
+
     return render_template("edit_workout.html", workout=workout)
