@@ -1,6 +1,6 @@
 # WorkoutHub
 
-The Live App can be found at:
+The Live App can be found at: https://workouthub-2144cdf5941f.herokuapp.com/
 
 WorkoutHub is a place to keep, change and add new workouts all in one place. It allows you to easily access all of your planned workouts.
 
@@ -33,6 +33,7 @@ Ultimately the goal of the app is to create a secure and easy way to edit and ke
 
 ## Design
 ### Wireframes
+Below are the designs that were used as a reference point to build the project, these designs were build while keeping in mind the needs of the above used stories.
 #### Home Page
 ![Image of homepage.html](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/New%20Wireframe%201.png)
 
@@ -69,4 +70,11 @@ This issue was rectified by using: psql -h 127.0.0.1 in the terminal, forcing ps
 
 #### Bug 2
 The second issue I encountered was when trying to edit/delete a workout, this was taking me to the url with undefined at the end.
+
+This issue was rectified by moving a lot of functionality away from the javascript file and into the html file, allowing me to use JS to handle the replication and jinja in the html to link correctly.
+
+#### Bug 3
+The third issue which I encountered was that the live version hosted on heroku maxed out the possible connections.
+
+This issue was likely caused by to much interaction having happened for the database to handle. This was rectified by restarting all dyno's in heroku.
 
