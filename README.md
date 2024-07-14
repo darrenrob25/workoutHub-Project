@@ -33,6 +33,7 @@ Ultimately the goal of the app is to create a secure and easy way to edit and ke
 
 ## Design
 ### Wireframes
+Below are the designs that were used as a reference point to build the project, these designs were build while keeping in mind the needs of the above used stories.
 #### Home Page
 ![Image of homepage.html](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/New%20Wireframe%201.png)
 
