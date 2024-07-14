@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,10 +29,9 @@
         </div>
         {% else %}
         <form class="form-inline my-4 my-lg-0 justify-content-end">
-            <a href="{{ url_for('register') }}">
                 <button class="btn btn-outline-success my-2 my-sm-0 login-button justify-content-end"
-                    type="button">Register</button>
-            </a>
+                    type="button"><a href="{{ url_for('register') }}">Register</a></button>
+            
         </form>
         {% endif %}
     </div>
