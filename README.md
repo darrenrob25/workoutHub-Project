@@ -253,5 +253,28 @@ The Database for this project was provided by CodeInstitute, you can obtain a po
 7. 'From Workouthub import db'
 8. 'db.create_all()'
 9. Your database should now be created.
+10. 
 ***
+
+ ## Credits
+
+ ### Content
+ - Processes from the CI Task Manager project was used to help create this website - [CI Task Manager](https://github.com/Code-Institute-Solutions/flask-sqlalchemy-task-manager/tree/main)
+
+- HTML, CSS, Python and Javascript code help was taken from w3schools - [W3Schools](https://www.w3schools.com/)
+
+- Bootstrap was used to help with the CSS [Bootstrap](https://getbootstrap.com/)
+
+- Various [Stack Overflow](https://stackoverflow.com) articles were used for guidance, most notably:
+ 
+- [Flask Jsonify](https://tedboy.github.io/flask/generated/flask.jsonify.html)
+  
+- [Werkzeug](https://werkzeug.palletsprojects.com/en/3.0.x/)
+
+
+
+### Media
+* Background Photo taken from [pexels](https://www.pexels.com/)
+
+
 
