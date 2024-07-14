@@ -13,7 +13,7 @@ def home():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-
+        # checking that both username and password are provided
         if not username or not password:
             flash("Username and Password are required.", "danger")
             return redirect(url_for("home"))
@@ -31,14 +31,17 @@ def home():
             flash("Incorrect Username or Password", "danger")
 
         return redirect(url_for("home"))
-
+    # rendering the homepage template
     return render_template("home.html")
 
+
+# Route for the dashboard page, shows the users workouts
 @app.route("/dashboard/<username>", methods=["GET", "POST"])
 def dashboard(username):
     if "user" not in session:
         return redirect(url_for("home"))
 
+    # Gets the user based on the username stored in the session
     user = User.query.filter_by(username=session.get("user")).first()
     if user:
         username = user.username
