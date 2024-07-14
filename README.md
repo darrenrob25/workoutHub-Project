@@ -126,6 +126,17 @@ The below metrics were returned:
 * The largest function has 19 statements in it, the median is 5
 * The most complex function has a cyclomatic complexity value of 5 with the median being 1.
 
+#### Code Institute Python Linter
+#### Models.py
+(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/models-linter.png)
+
+#### _init_.py
+(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/init-pep8.png)
+
+#### routes.py
+(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/routes-pep8.png)
+
+
 #### User Story Testing
 #### First Time User
 |Story No.|Result|Story/ Evidence|
@@ -141,6 +152,24 @@ The below metrics were returned:
 |2|Test Pass |As a user, <br> I want to be able to delete existing workouts.  <br><br>I know this has been achieved there is the ability to delete workouts <br><br>Evidence:<br>The functionality to delete workouts works correctly<br> ![delete workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)|
 
 #### Accessibility Testing
+
+| Login Page |
+| ------- |
+| ![lighthouse result login page](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/login-page-lighthouse%20copy.png) |
+
+| Register |
+| ------- |
+| ![lighthouse result register page](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/register-page-lighthouse.png) |
+
+| Edit Workout |
+| ------- |
+| ![lighthouse result edit workout page](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout-page-lighthouse.png) |
+
+| Dashboard |
+| ------- |
+| ![lighthouse resultdashboard page](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/dashboard-page-lighthouse.png) |
+
+
 ### Manual Testing
 * I have tested that the project works in different web browsers.
 * I have tested that the project is responsive and works with different device sizes and it looks good and functions correctly.
