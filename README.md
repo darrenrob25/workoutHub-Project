@@ -131,13 +131,13 @@ The below metrics were returned:
 
 #### Code Institute Python Linter
 #### Models.py
-(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/models-linter.png)
+![models](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/models-linter.png)
 
 #### _init_.py
-(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/init-pep8.png)
+![init](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/init-pep8.png)
 
 #### routes.py
-(https://github.com/darrenrob25/workoutHub-Project/blob/main/media/routes-pep8.png)
+![routes](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/routes-pep8.png)
 
 
 #### User Story Testing
