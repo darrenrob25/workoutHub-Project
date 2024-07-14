@@ -31,7 +31,7 @@
                         <p>{{ exercise.exercise_name }}: {{ exercise.sets }} sets, {{ exercise.reps }} reps</p>
                     {% endfor %}
                     <div class="row">
-                        <button class="btn btn-link">
+                        <button class="btn">
                         <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="edit-button col">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i> Edit Workout
                             </a>
@@ -78,8 +78,8 @@
                 <input type="number" class="form-control" id="reps_0" name="reps[]" required>
             </div>
         </div>
-        <button type="button" class="btn btn-secondary" id="add-exercise-button">Add Exercise</button>
-        <button type="submit" class="btn btn-primary">Add Workout</button>
+        <button type="button" class="btn btn-secondary" id="add-exercise-button"><i class="fa fa-plus" aria-hidden="true"></i> Add Exercise</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add Workout</button>
     </form>
 </div>
 

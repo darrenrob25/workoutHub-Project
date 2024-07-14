@@ -92,7 +92,7 @@ h5{
 }
 
 a {
-    all: none;
+    all: unset;
     font-size: 1.1rem;
     color: white
 }
@@ -100,6 +100,7 @@ a {
 a:hover {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.514);
+    cursor: pointer;
 }
 
 .workout-head {
