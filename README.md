@@ -57,6 +57,19 @@ Below are the designs that were used as a reference point to build the project, 
 
 ***
 
+### Font Selection
+Google fonts was used for all fonts on the website, I chose google fonts as it is simple and provides clean refined fonts.
+
+#### Monofett
+Used for the "logo" or main title on the navbar
+![Image of colour schema](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/monofett.png)
+
+
+#### Red Hat Mono
+Used for the rest of the text throughout the website
+![Image of colour schema](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/red-hat-mono.png)
+***
+
 ### Features
 
 
