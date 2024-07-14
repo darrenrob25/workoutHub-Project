@@ -155,10 +155,6 @@ color: white
     cursor:pointer;
 }
 
-button{
-    all: unset;
-}
-
 #add-workout-container{
     padding-top: 10px;
     padding-bottom: 10px;
