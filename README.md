@@ -51,6 +51,12 @@ Below are the designs that were used as a reference point to build the project, 
 
 ***
 
+### Colour Choices
+
+![Image of colour schema](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/colour-palette.png)
+
+***
+
 ### Features
 
 
