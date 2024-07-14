@@ -1,6 +1,6 @@
 # Importing modules and functions
-import os 
-from flask import Flask 
+import os
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -22,10 +22,10 @@ app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 
 if os.environ.get("DEVELOPMENT") == "True":
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DB_URL")
-else: 
+else:
     uri = os.environ.get("DATABASE_URL")
     if uri.startswith("postgres://"):
-         uri = uri.replace("postgres://", "postgresql://", 1)
+        uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
 
