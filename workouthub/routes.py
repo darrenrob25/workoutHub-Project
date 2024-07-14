@@ -18,10 +18,12 @@ def home():
             flash("Username and Password are required.", "danger")
             return redirect(url_for("home"))
 
+        # converting username to lowercase for consistency.
         username = username.lower()
+        #checking if the user exists and existing password is correct
         existing_user = User.query.filter_by(username=username).first()
-
         if existing_user and check_password_hash(existing_user.password, password):
+            # If the login is successful, store the username in the session and redirect to dashboard
             session["user"] = username
             flash(f"Welcome Back, {username}", "success")
             return redirect(url_for("dashboard", username=username))
