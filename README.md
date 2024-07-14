@@ -58,6 +58,11 @@ Below are the designs that were used as a reference point to build the project, 
 
 ### Testing
 
+#### W3 Validator
+
+##### Home/Login Page
+https://validator.w3.org/nu/?doc=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2F
+
 
 ***
 
