@@ -73,3 +73,7 @@ The second issue I encountered was when trying to edit/delete a workout, this wa
 This issue was rectified by moving a lot of functionality away from the javascript file and into the html file, allowing me to use JS to handle the replication and jinja in the html to link correctly.
 
 #### Bug 3
+The third issue which I encountered was that the live version hosted on heroku maxed out the possible connections.
+
+This issue was likely caused by to much interaction having happened for the database to handle. This was rectified by restarting all dyno's in heroku.
+
