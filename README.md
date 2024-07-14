@@ -114,6 +114,9 @@ Page allowing you to change currently existing workouts.
 https://validator.w3.org/nu/?doc=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2F
 No errors were returned
 
+#### Register Page
+https://validator.w3.org/nu/?doc=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2Fregister
+
 #### Jigsaw CSS Validator
 https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fworkouthub-2144cdf5941f.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en
 No errors were returned
