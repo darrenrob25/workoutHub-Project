@@ -187,8 +187,25 @@ This issue was likely caused by to much interaction having happened for the data
 4. Type git clone, and then paste the URL
 5. Press Enter.
 
-### Local Deployment
+#### Local Deployment
 1. Sign up to [Gitpod](https://gitpod.io/)
 2. Download the Gitpod browser extension.
 3. On GitHub.com, navigate to the [WorkoutHub](https://github.com/darrenrob25/workoutHub) repository.
 4. Above the list of files click the button that says 'Gitpod'.
+
+#### Remote Deployment
+1. Log in to Heroku
+2. Click on the 'Create new app' button.
+3. Give your application a name that hasn't been previously used, select the closest region to you and click the 'Create app' button.
+4. You can use an external database for example postgresql.
+5. Go to settings section and click 'Reveal Config Vars' in the Config variable section.
+6. Set DATABASE_URL to your external database link.
+7. Set DEBUG to False
+8. Set IP to o.o.o.o
+9. Set port to 5000
+10. Set SECRET_KEY to your chosen secret key
+11. Navigate to the 'Deploy' page
+12. Select 'GitHub' from the 'Deployment method' section
+13. Enter your github account details and select the forked/ clone repository.
+14. Select 'Manual deploy', select the 'main' branch in the drop down and click the 'Deploy' button.
+15. Once built, click the 'View' button to load the URL and it should be done.
