@@ -175,3 +175,7 @@ color: white
 .footer-text{
     font-size: 0.9rem;
 }
+
+.no-button{
+    all:unset;
+}
