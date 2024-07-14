@@ -86,18 +86,25 @@ def register():
             flash("Username already in use", "danger")
             return redirect(url_for("register"))
 
+        # Hashing password before storing it for security
         hashed_password = generate_password_hash(password)
         new_user = User(username=username, password=hashed_password)
         
+        # Adding new user to the database and committing
         db.session.add(new_user)
         db.session.commit()
 
+
+        # Log the user in and redirect to the home page
         session["user"] = username
         flash("Registration successful", "success")
         return redirect(url_for("home"))
 
+    # Renders the registration template
     return render_template("register.html")
 
+
+# Route for logging out, clears the session and redirects to home page
 @app.route("/logout")
 def logout():
     flash("Successfully Logged Out")
