@@ -28,6 +28,11 @@ else:
          uri = uri.replace("postgres://", "postgresql://", 1)
     app.config["SQLALCHEMY_DATABASE_URI"] = uri
 
+# SQLAlchemy settings
+app.config['SQLALCHEMY_POOL_SIZE'] = 10  # Adjust based on your database's connection limit and app's needs
+app.config['SQLALCHEMY_MAX_OVERFLOW'] = 5  # Adjust based on your expected peak load
+app.config['SQLALCHEMY_POOL_TIMEOUT'] = 30  # Timeout in seconds for acquiring a connection from the pool
+app.config['SQLALCHEMY_POOL_RECYCLE'] = 3600  # Recycle connections after this many seconds to avoid timeouts and stale connections
 
 
 db = SQLAlchemy(app)
