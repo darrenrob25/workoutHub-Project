@@ -95,6 +95,21 @@ The below metrics were returned:
 * The largest function has 19 statements in it, the median is 5
 * The most complex function has a cyclomatic complexity value of 5 with the median being 1.
 
+#### User Story Testing
+### User Stories Testing
+#### First Time User
+|Story No.|Result|Story/ Evidence|
+| ------------- | ------------- | ------------- |
+|1|Test Pass |As a first time user , <br> I want to be able to know how to easily sign up <br> so that I can access the app.  <br><br>I know I am done, when there is clear signposting to sign up. <br><br>Evidence:<br>There is clear signposting to the register page in the navbar.<br> ![Signup Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/signup-function.png)|
+|2|Test Pass |As a first time user, <br> I want to be able to login <br> so that I asm able to use the app <br><br>I know this has been achieved when the user can sign in. <br><br>Evidence:<br>There is clear signposting to login, the login function is working correctly.<br> ![Login Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/login-function.png)|
+|3|Test Pass |As a first time user, <br> I want to be able to add workouts <br>so that i can use the app <br><br>I know I am done there is the ability to add workouts. <br><br>Evidence:<br>The Add Workout function is working as expected.<br> ![Add Workout Function](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/add-workout.png)|
+
+#### All Users
+|Story No.|Result|Story/ Evidence|
+| ------------- | ------------- | ------------- |
+|1|Test Pass |As a user, <br> I want to be able to make changes to my workouts  <br><br>I know I am done, when users are able to edit their workouts.<br><br>Evidence:<br>There is functionality to edit workouts<br> ![edit-workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/edit-workout.png)|
+|2|Test Pass |As a user, <br> I want to be able to delete existing workouts.  <br><br>I know this has been achieved there is the ability to delete workouts <br><br>Evidence:<br>The functionality to delete workouts works correctly<br> ![delete workout](https://github.com/darrenrob25/workoutHub-Project/blob/main/media/delete-workout.png)|
+
 ***
 
 ### Bugs
