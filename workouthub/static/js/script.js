@@ -6,61 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const addExerciseButton = document.getElementById('add-exercise-button');
     const exercisesContainer = document.getElementById('exercises-container');
     let exerciseCount = 1; // Initialize exercise count
-    let workoutsFetched = false;
 
-    // Fetch and display workouts when "View Workouts" is clicked
+    // Toggle visibility of the view workouts container
     viewWorkoutsLink.addEventListener('click', function(event) {
         event.preventDefault();
-
-        // Hide the add workout container when view workouts is clicked
         addWorkoutContainer.style.display = 'none';
-
         if (workoutsContainer.style.display === 'block') {
             workoutsContainer.style.display = 'none';
         } else {
-            if (!workoutsFetched) {
-                fetch('/workouts')
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.error) {
-                            alert(data.error);
-                            return;
-                        }
-
-                        const workoutsList = document.getElementById('workouts-list');
-                        workoutsList.innerHTML = '';
-                        
-                        data.forEach(workout => {
-                            const workoutDiv = document.createElement('div');
-                            workoutDiv.className = 'col-md-6 col-lg-6 mb-4';
-                            workoutDiv.innerHTML = `
-                            <div class="your-workout-container bg-dark p-3 text-white">
-                                <h5>${workout.workout_name}</h5>
-                                <p>${workout.workout_type}</p>
-                                ${workout.exercises.map(exercise => `
-                                    <p>${exercise.exercise_name}: ${exercise.sets} sets, ${exercise.reps} reps</p>
-                                `).join('')}
-                                 <div class="row">
-                                    <a href="/edit-workout/${workout.id}" class="edit-button col">
-                                        <i class="fa fa-arrow-right" aria-hidden="true"></i> Edit Workout
-                                    </a>
-                                    <form action="/delete_workout/${workout.id}" method="POST" class="delete-form col">
-                                        <button type="submit" class="btn btn-link delete-button">
-                                            <i class="fa fa-minus" aria-hidden="true"></i> Delete Workout
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                            `;
-                            workoutsList.appendChild(workoutDiv);
-                        });
-
-                        workoutsFetched = true;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching workouts:', error);
-                    });
-            }
             workoutsContainer.style.display = 'block';
         }
     });
@@ -68,10 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Toggle visibility of the add workout container
     addWorkoutLink.addEventListener('click', function(event) {
         event.preventDefault();
-
-        // Hide the workouts container when add workout is clicked
         workoutsContainer.style.display = 'none';
-
         if (addWorkoutContainer.style.display === 'block') {
             addWorkoutContainer.style.display = 'none';
         } else {

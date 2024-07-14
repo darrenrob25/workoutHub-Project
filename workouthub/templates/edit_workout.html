@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container bg-dark mt-4">
+    <h4 class="text-center">Edit Workout</h4>
+    <form id="edit-workout-form" method="POST" action="{{ url_for('edit_workout', workout_id=workout.id) }}">
+        <div class="form-group">
+            <label for="workout_name">Workout Name</label>
+            <input type="text" class="form-control" id="workout_name" name="workout_name" value="{{ workout.workout_name }}" required>
+        </div>
+        <div class="form-group">
+            <label for="workout_type">Workout Type</label>
+            <select class="form-control" id="workout_type" name="workout_type" required>
+                <option value="Strength" {% if workout.workout_type == 'Strength' %}selected{% endif %}>Strength</option>
+                <option value="Hypertrophy" {% if workout.workout_type == 'Hypertrophy' %}selected{% endif %}>Hypertrophy</option>
+                <option value="Conditioning" {% if workout.workout_type == 'Conditioning' %}selected{% endif %}>Conditioning</option>
+                <option value="Functional" {% if workout.workout_type == 'Functional' %}selected{% endif %}>Functional</option>
+                <option value="Calisthenics" {% if workout.workout_type == 'Calisthenics' %}selected{% endif %}>Calisthenics</option>
+                <option value="Other" {% if workout.workout_type == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+        <div id="exercises-container">
+            {% for exercise in exercises %}
+                <div class="exercise form-group">
+                    <h5>Exercise {{ loop.index }}</h5>
+                    <label for="exercise_name_{{ loop.index0 }}">Exercise Name</label>
+                    <input type="text" class="form-control" id="exercise_name_{{ loop.index0 }}" name="exercise_name[]" value="{{ exercise.exercise_name }}" required>
+                    <label for="sets_{{ loop.index0 }}">Sets</label>
+                    <input type="number" class="form-control" id="sets_{{ loop.index0 }}" name="sets[]" value="{{ exercise.sets }}" required>
+                    <label for="reps_{{ loop.index0 }}">Reps</label>
+                    <input type="number" class="form-control" id="reps_{{ loop.index0 }}" name="reps[]" value="{{ exercise.reps }}" required>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Update Workout</button>
+    </form>
+</div>
+
+{% endblock %}

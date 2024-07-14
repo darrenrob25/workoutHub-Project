@@ -1,9 +1,9 @@
 from flask import (
-    flash, render_template, redirect, request, session, url_for, jsonify)
+    flash, render_template, redirect, request, session, url_for, jsonify
+)
 from werkzeug.security import generate_password_hash, check_password_hash
 from workouthub import app, db
 from workouthub.models import User, Workout, Exercise
-import logging
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -40,29 +40,19 @@ def dashboard(username):
     else:
         return redirect(url_for("home"))
 
-    return render_template("dashboard.html", username=username)
-
-@app.route("/workouts", methods=["GET"])
-def get_workouts():
-    if "user" not in session:
-        return jsonify({"error": "Not authorized"}), 403
-
-    user = User.query.filter_by(username=session.get("user")).first()
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-
     workouts = Workout.query.filter_by(user_id=user.id).all()
     workouts_data = []
     for workout in workouts:
         exercises = Exercise.query.filter_by(workout_id=workout.id).all()
         exercises_data = [{"exercise_name": e.exercise_name, "sets": e.sets, "reps": e.reps} for e in exercises]
         workouts_data.append({
+            "id": workout.id,  # Make sure id is included for edit links
             "workout_name": workout.workout_name,
             "workout_type": workout.workout_type,
             "exercises": exercises_data
         })
 
-    return jsonify(workouts_data)
+    return render_template("dashboard.html", username=username, workouts=workouts_data)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -163,11 +153,10 @@ def delete_workout(workout_id):
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
-    if workout.user_id == user.id:
-        db.session.delete(workout)
-        db.session.commit()
-        flash("Workout deleted successfully!", "success")
-        return redirect(url_for("dashboard", username=user.username))
+    db.session.delete(workout)
+    db.session.commit()
+    flash("Workout deleted successfully!", "success")
+    return redirect(url_for("dashboard", username=user.username))
 
 @app.route("/edit-workout/<int:workout_id>", methods=["GET", "POST"])
 def edit_workout(workout_id):
@@ -193,4 +182,5 @@ def edit_workout(workout_id):
             flash(f"An error occurred: {str(e)}", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
     
-    return render_template("edit_workout.html", workout=workout)
+    exercises = Exercise.query.filter_by(workout_id=workout_id).all()
+    return render_template("edit_workout.html", workout=workout, exercises=exercises)
