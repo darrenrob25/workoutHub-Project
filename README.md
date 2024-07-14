@@ -220,6 +220,6 @@ The Database for this project was provided by CodeInstitute, you can obtain a po
 6. Use the below codes in the terminal to create your database:
 7. 'From Workouthub import db'
 8. 'db.create_all()'
-
+9. Your database should now be created.
 ***
 
