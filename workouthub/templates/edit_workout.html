@@ -30,13 +30,15 @@
                 <input type="number" class="form-control" id="sets_{{ loop.index0 }}" name="sets[]" value="{{ exercise.sets }}" required>
                 <label for="reps_{{ loop.index0 }}">Reps</label>
                 <input type="number" class="form-control" id="reps_{{ loop.index0 }}" name="reps[]" value="{{ exercise.reps }}" required>
+                <button type="button" class="btn btn-danger delete-exercise-button">Remove Exercise</button> <!-- Remove button -->
             </div>
             {% endfor %}
         </div>
-        <button type="button" class="btn btn-secondary" id="add-exercise-button">Add Exercise</button>
-        <button type="submit" class="btn btn-outline-success">Update Workout</button>
+        <div class="text-center mt-3"> <!-- Centered the buttons horizontally -->
+            <button type="button" class="btn btn-secondary" id="add-exercise-button">Add Exercise</button>
+            <button type="submit" class="btn btn-outline-success ml-2">Update Workout</button>
+        </div>
     </form>
 </div>
 
-<script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

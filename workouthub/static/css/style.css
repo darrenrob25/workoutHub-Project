@@ -152,3 +152,7 @@ button{
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+.delete-exercise-button{
+    margin-top: 10px;
+}
