@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block content %}
 
-<div class="container bg-dark mt-4">
+{% block content %}
+<div class="container bg-dark mt-4 edit-workout-container">
     <h4 class="text-center">Edit Workout</h4>
     <form id="edit-workout-form" method="POST" action="{{ url_for('edit_workout', workout_id=workout.id) }}">
         <div class="form-group">
@@ -20,20 +20,23 @@
             </select>
         </div>
         <div id="exercises-container">
-            {% for exercise in exercises %}
-                <div class="exercise form-group">
-                    <h5>Exercise {{ loop.index }}</h5>
-                    <label for="exercise_name_{{ loop.index0 }}">Exercise Name</label>
-                    <input type="text" class="form-control" id="exercise_name_{{ loop.index0 }}" name="exercise_name[]" value="{{ exercise.exercise_name }}" required>
-                    <label for="sets_{{ loop.index0 }}">Sets</label>
-                    <input type="number" class="form-control" id="sets_{{ loop.index0 }}" name="sets[]" value="{{ exercise.sets }}" required>
-                    <label for="reps_{{ loop.index0 }}">Reps</label>
-                    <input type="number" class="form-control" id="reps_{{ loop.index0 }}" name="reps[]" value="{{ exercise.reps }}" required>
-                </div>
+            {% for exercise in workout.exercises %}
+            <div class="exercise form-group">
+                <h5>Exercise {{ loop.index }}</h5>
+                <input type="hidden" name="exercise_id[]" value="{{ exercise.id }}">
+                <label for="exercise_name_{{ loop.index0 }}">Exercise Name</label>
+                <input type="text" class="form-control" id="exercise_name_{{ loop.index0 }}" name="exercise_name[]" value="{{ exercise.exercise_name }}" required>
+                <label for="sets_{{ loop.index0 }}">Sets</label>
+                <input type="number" class="form-control" id="sets_{{ loop.index0 }}" name="sets[]" value="{{ exercise.sets }}" required>
+                <label for="reps_{{ loop.index0 }}">Reps</label>
+                <input type="number" class="form-control" id="reps_{{ loop.index0 }}" name="reps[]" value="{{ exercise.reps }}" required>
+            </div>
             {% endfor %}
         </div>
-        <button type="submit" class="btn btn-primary">Update Workout</button>
+        <button type="button" class="btn btn-secondary" id="add-exercise-button">Add Exercise</button>
+        <button type="submit" class="btn btn-outline-success">Update Workout</button>
     </form>
 </div>
 
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 {% endblock %}

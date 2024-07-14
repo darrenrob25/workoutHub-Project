@@ -165,15 +165,32 @@ def edit_workout(workout_id):
     if request.method == "POST":
         workout_name = request.form.get("workout_name")
         workout_type = request.form.get("workout_type")
-        
+        exercise_ids = request.form.getlist("exercise_id[]")
+        exercise_names = request.form.getlist("exercise_name[]")
+        sets = request.form.getlist("sets[]")
+        reps = request.form.getlist("reps[]")
+
         if not workout_name or not workout_type:
             flash("Workout name and type are required.", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
         
         workout.workout_name = workout_name
         workout.workout_type = workout_type
-        
+
         try:
+            # Clear existing exercises
+            Exercise.query.filter_by(workout_id=workout.id).delete()
+
+            # Add updated exercises
+            for exercise_name, set_count, rep_count in zip(exercise_names, sets, reps):
+                new_exercise = Exercise(
+                    exercise_name=exercise_name,
+                    sets=set_count,
+                    reps=rep_count,
+                    workout_id=workout.id
+                )
+                db.session.add(new_exercise)
+
             db.session.commit()
             flash("Workout updated successfully!", "success")
             return redirect(url_for("dashboard", username=session.get("user")))
@@ -182,5 +199,4 @@ def edit_workout(workout_id):
             flash(f"An error occurred: {str(e)}", "danger")
             return redirect(url_for("edit_workout", workout_id=workout_id))
     
-    exercises = Exercise.query.filter_by(workout_id=workout_id).all()
-    return render_template("edit_workout.html", workout=workout, exercises=exercises)
+    return render_template("edit_workout.html", workout=workout)
