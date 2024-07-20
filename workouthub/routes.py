@@ -187,7 +187,7 @@ def delete_workout(workout_id):
         return redirect(url_for("home"))
 
     # Getting the workout by ID and checking that it belongs to current user
-    if workout.user_id != user.id:
+    if Workout.user_id != user.id:
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
 
