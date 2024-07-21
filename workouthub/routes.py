@@ -180,16 +180,22 @@ def delete_workout(workout_id):
         flash("You must be logged in to delete a workout.", "danger")
         return redirect(url_for("home"))
 
+
     # Getting username based on the username stored in the session
     user = User.query.filter_by(username=session.get("user")).first()
     if not user:
         flash("User not found.", "danger")
         return redirect(url_for("home"))
 
-    # Getting the workout by ID and checking that it belongs to current user
-    if Workout.user_id != user.id:
+
+    workout = Workout.query.get_or_404(workout_id)
+
+
+    # Check if the workout belongs to the current user
+    if workout.user_id != user.id:
         flash("You do not have permission to delete this workout.", "danger")
         return redirect(url_for("dashboard", username=user.username))
+
 
     # Deleting the workout and committing
     db.session.delete(workout)
