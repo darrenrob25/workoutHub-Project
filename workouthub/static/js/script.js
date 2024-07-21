@@ -106,3 +106,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Show and Hide Modal
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Function to set up the delete modal
+    function setupDeleteModal(button) {
+      const workoutId = button.getAttribute('data-workout-id');
+      const actionUrl = button.getAttribute('data-action-url');
+
+      // Set the form's action URL and workout ID
+      const form = document.getElementById('confirmDeleteForm');
+      form.action = actionUrl;
+      document.getElementById('modal_workout_id').value = workoutId;
+
+      // Show the modal
+      $('#confirmDeleteModal').modal('show');
+    }
+
+    // Attach event listener to all delete buttons
+    document.querySelectorAll('.delete-button').forEach(button => {
+      button.addEventListener('click', function () {
+        setupDeleteModal(this);
+      });
+    });
+  });
